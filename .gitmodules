@@ -1,0 +1,3 @@
+[submodule "HTogether"]
+	path = HTogether
+	url = https://github.com/CodeName-Anti/HTogether.git
