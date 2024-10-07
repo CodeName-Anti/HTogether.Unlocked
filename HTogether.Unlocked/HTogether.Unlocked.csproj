@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
     <AssemblyName>HTogether.Unlocked</AssemblyName>
-    <Product>My first plugin</Product>
+    <Product>HTogether.Unlocked</Product>
     <Version>1.0.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
@@ -12,17 +12,175 @@
       https://nuget.bepinex.dev/v3/index.json;
       https://nuget.samboy.dev/v3/index.json
     </RestoreAdditionalProjectSources>
-    <RootNamespace>HTogether.Unlocked</RootNamespace>
+    <RootNamespace>HTogether</RootNamespace>
+    
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="HTogether.Unlocked.csproj.user.example" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
     <PackageReference Include="BepInEx.Core" Version="5.*" />
+    <!--
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
-    <PackageReference Include="UnityEngine.Modules" Version="5.6.0" IncludeAssets="compile" />
+    -->
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\HTogether\HTogether\HTogether.csproj">
+      <Private>False</Private>
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp" Publicize="true">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="BouncyCastle.Cryptography">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\BouncyCastle.Cryptography.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\Cinemachine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="com.rlabrecque.steamworks.net">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\com.rlabrecque.steamworks.net.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ImGui.NET">
+      <HintPath>..\HTogether\deps\ImGui.NET.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mirror">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\Mirror.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mirror.Examples">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\Mirror.Examples.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mirror.Transports">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\Mirror.Transports.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rewired_Core">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\Rewired_Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rewired_Windows">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\Rewired_Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SharpGUI">
+      <HintPath>..\HTogether\deps\SharpGUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\Unity.Burst.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\Unity.Burst.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\Unity.InputSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.InputSystem.ForUI">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\Unity.InputSystem.ForUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\UnityEngine.InputModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(SuperMarketTogetherDir)\Supermarket Together_Data\Managed\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="AddGeneratedFile" BeforeTargets="BeforeCompile;CoreCompile" Inputs="$(MSBuildAllProjects)" Outputs="$(IntermediateOutputPath)GeneratedFile.cs">
+    <PropertyGroup>
+      <BepInExPluginGuid Condition="'$(BepInExPluginGuid)' == ''">$(AssemblyName)</BepInExPluginGuid>
+      <BepInExPluginName Condition="'$(BepInExPluginName)' == ''">$(Product)</BepInExPluginName>
+      <BepInExPluginVersion Condition="'$(BepInExPluginVersion)' == ''">$(Version)</BepInExPluginVersion>
+      <GeneratedText>
+        <![CDATA[
+namespace $(RootNamespace)
+{
+    internal static class UnlockedPluginInfo
+    {
+        public const string PLUGIN_GUID = "$(BepInExPluginGuid)"%3B
+        public const string PLUGIN_NAME = "$(BepInExPluginName)"%3B
+        public const string PLUGIN_VERSION = "$(BepInExPluginVersion)"%3B
+    }
+}
+      ]]>
+      </GeneratedText>
+      <GeneratedFilePath>$(IntermediateOutputPath)MyPluginInfo.cs</GeneratedFilePath>
+    </PropertyGroup>
+    <ItemGroup>
+      <Compile Include="$(GeneratedFilePath)" />
+      <FileWrites Include="$(GeneratedFilePath)" />
+    </ItemGroup>
+    <WriteLinesToFile Lines="$(GeneratedText)" File="$(GeneratedFilePath)" WriteOnlyWhenDifferent="true" Overwrite="true" />
+  </Target>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="$(SuperMarketTogetherDir) != ''">
+
+    <!--SuperMarketTogetherDir is defined in HTogether.csproj.user which is not included because of the .gitignore-->
+    <Exec Command="xcopy &quot;$(TargetPath)&quot; &quot;$(SuperMarketTogetherDir)\BepInEx\plugins&quot; /Y" />
+    <Exec Command="xcopy &quot;$(TargetDir)$(AssemblyName).pdb&quot; &quot;$(SuperMarketTogetherDir)\BepInEx\plugins&quot; /Y /I" />
+  </Target>
+
 </Project>
