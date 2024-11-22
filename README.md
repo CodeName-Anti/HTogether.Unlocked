@@ -1,6 +1,4 @@
 # HTogether.Unlocked
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/O5O178FHD)
-
 ![GitHub all releases](https://img.shields.io/github/downloads/CodeName-Anti/HTogether.Unlocked/total?color=%23FF8C00&style=flat-square)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/CodeName-Anti/HTogether.Unlocked?style=flat-square)
 
